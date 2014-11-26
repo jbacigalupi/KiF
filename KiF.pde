@@ -22,9 +22,15 @@ IG.p(IG.duration());
 ISurface[] fieldSurfaces = IG.layer("field").surfaces();
 for(int i=0; i < fieldSurfaces.length; i++)
   {
-    new I2DSurfaceSlopeField(fieldSurfaces[i]).gaussian(50).intensity(20); //switched to gaussian field decay, which seems to have moved things along a bit.
+    new ISurfaceSlopeField(fieldSurfaces[i]).gaussian(50).intensity(15); //switched to gaussian field decay, which seems to have moved things along a bit.
   }
   
+/* --- curve attractor ---*/
+for(int i=0; i< IG.layer("curve").curveNum(); i++){
+  new ICurveTangentField(IG.curve(i)).intensity(20).gaussian(50);
+}
+/* --- curve attractor ---*/
+
 //new IAttractor(0,45,0).intensity(-2);
 //new IAttractor(80,-50,0).intensity(-4);
 new IAttractor(100,-10,0).intensity(-10).gaussianDecay(50.0);
@@ -33,8 +39,9 @@ new IAttractor(150,0,0).intensity(10);
   
 /* --- END GEOMETRIES --- */
 
-new IFieldVisualizer(-100,-50,-50, 100,50,50,20,10,10);
+IFieldVisualizer visualizer = new IFieldVisualizer(-100,-50,-50, 100,50,50,20,10,10);
 //new IFieldVisualizer(-100,-100,1, 100,100,1, 40,40,1);
+visualizer.fixLength(false);  //changed magnitude of field vectors to be proportional to the slope of the surface
 
 IGeometry[] geometries = IG.layer("particle").geometries();
 for(int i=0; i < geometries.length; i++){
