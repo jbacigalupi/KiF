@@ -19,21 +19,30 @@ IG.p(IG.duration());
 
 /* --- BEGIN GEOMETRIES --- */
 
-ISurface[] fieldSurfaces = IG.layer("field").surfaces();
-for(int i=0; i < fieldSurfaces.length; i++)
-  {
-    new ISurfaceSlopeField(fieldSurfaces[i]).gaussian(50).intensity(15); //switched to gaussian field decay, which seems to have moved things along a bit.
-  }
-  
+//ISurface[] fieldSurfaces = IG.layer("field").surfaces();
+//for(int i=0; i < fieldSurfaces.length; i++)
+//  {
+//    new ISurfaceSlopeField(fieldSurfaces[i]).gaussian(50).intensity(15); //switched to gaussian field decay, which seems to have moved things along a bit.
+//  }
+//  
 /* --- curve attractor ---*/
 for(int i=0; i< IG.layer("curve").curveNum(); i++){
   new ICurveTangentField(IG.curve(i)).intensity(20).gaussian(50);
 }
+
+for(int i=0; i< IG.layer("curve2").curveNum(); i++){
+  new ICurveAttractorField(IG.curve(i)).intensity(20).gaussian(50);  //adds field normal to the curve
+}
+//for(int i=0; i< IG.layer("curve3").curveNum(); i++){
+//  new ICurveAttractorField(IG.curve(i)).intensity(-20).gaussian(50);
+//}
 /* --- curve attractor ---*/
+
+
 
 //new IAttractor(0,45,0).intensity(-2);
 //new IAttractor(80,-50,0).intensity(-4);
-new IAttractor(100,-10,0).intensity(-10).gaussianDecay(50.0);
+//new IAttractor(100,-10,0).intensity(-10).gaussianDecay(50.0);
 //a1.gaussianDecay(5);
 new IAttractor(150,0,0).intensity(10);
   
