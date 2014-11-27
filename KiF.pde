@@ -30,7 +30,7 @@ for(int i=0; i< IG.layer("curve").curveNum(); i++){
   new ICurveTangentField(IG.curve(i)).intensity(20).gaussian(50);
 }
 
-for(int i=0; i< IG.layer("curve2").curveNum(); i++){
+for(int i=0; i< IG.layer("normalCurve").curveNum(); i++){
   new ICurveAttractorField(IG.curve(i)).intensity(20).gaussian(50);  //adds field normal to the curve
 }
 //for(int i=0; i< IG.layer("curve3").curveNum(); i++){
@@ -74,8 +74,8 @@ for(int i=0; i < geometries.length; i++){
 //      b.separationDist(30.0);
 //      b.alignmentRatio(7.0);
 //      b.alignmentDist(30.0);
-      b.cohesionDist(29);
-      b.cohesionRatio(1.5);
+      b.cohesionDist(25);
+      b.cohesionRatio(1.0);
       b.separationRatio(4.0);
       b.separationDist(30.0);
       b.alignmentRatio(7.0);
