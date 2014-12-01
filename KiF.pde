@@ -34,7 +34,7 @@ for(int i=0; i< IG.layer("curve").curveNum(); i++){
 //}
 
 for(int i=0; i< IG.layer("normalCurve").curveNum(); i++){
-  new ICurveAttractorField(IG.curve(i)).intensity(15).gaussian(50);  //adds field normal to the curve
+  new ICurveAttractorField(IG.curve(i)).intensity(13).gaussian(50);  //adds field normal to the curve
 }
 
 //for(int i=0; i< IG.layer("normalCurve2").curveNum(); i++){
