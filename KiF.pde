@@ -19,11 +19,11 @@ IG.p(IG.duration());
 
 /* --- BEGIN GEOMETRIES --- */
 
-ISurface[] fieldSurfaces = IG.layer("field").surfaces();
-for(int i=0; i < fieldSurfaces.length; i++)
-  {
-    new ISurfaceSlopeField(fieldSurfaces[i]).gaussian(50).intensity(15); //switched to gaussian field decay, which seems to have moved things along a bit.
-  }
+//ISurface[] fieldSurfaces = IG.layer("field").surfaces();
+//for(int i=0; i < fieldSurfaces.length; i++)
+//  {
+//    new ISurfaceSlopeField(fieldSurfaces[i]).gaussian(50).intensity(15); //switched to gaussian field decay, which seems to have moved things along a bit.
+//  }
   
 /* --- curve attractor ---*/
 for(int i=0; i< IG.layer("curve").curveNum(); i++){
@@ -33,15 +33,19 @@ for(int i=0; i< IG.layer("curve").curveNum(); i++){
 
 //new IAttractor(0,45,0).intensity(-2);
 //new IAttractor(80,-50,0).intensity(-4);
-new IAttractor(100,-10,0).intensity(-10).gaussianDecay(50.0);
+//new IAttractor(100,-10,0).intensity(-20).gaussianDecay(50.0);
 //a1.gaussianDecay(5);
-new IAttractor(150,0,0).intensity(10);
+new IAttractor(150,0,0).intensity(8);
   
 /* --- END GEOMETRIES --- */
+
+/* --- BEGIN VISUALIZATION OF FIELD --- */
 
 IFieldVisualizer visualizer = new IFieldVisualizer(-100,-50,-50, 100,50,50,20,10,10);
 //new IFieldVisualizer(-100,-100,1, 100,100,1, 40,40,1);
 visualizer.fixLength(false);  //changed magnitude of field vectors to be proportional to the slope of the surface
+
+/* --- END VISUALIZATION OF FIELD --- */
 
 IGeometry[] geometries = IG.layer("particle").geometries();
 for(int i=0; i < geometries.length; i++){
@@ -65,8 +69,8 @@ for(int i=0; i < geometries.length; i++){
 //      b.separationDist(30.0);
 //      b.alignmentRatio(7.0);
 //      b.alignmentDist(30.0);
-      b.cohesionDist(29);
-      b.cohesionRatio(1.5);
+      b.cohesionDist(30);
+      b.cohesionRatio(1.7);
       b.separationRatio(4.0);
       b.separationDist(30.0);
       b.alignmentRatio(7.0);
