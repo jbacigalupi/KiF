@@ -24,17 +24,24 @@ IG.p(IG.duration());
 //  {
 //    new ISurfaceSlopeField(fieldSurfaces[i]).gaussian(50).intensity(15); //switched to gaussian field decay, which seems to have moved things along a bit.
 //  }
-  
+
 /* --- curve attractor ---*/
 for(int i=0; i< IG.layer("curve").curveNum(); i++){
   new ICurveTangentField(IG.curve(i)).intensity(20).gaussian(50);
 }
+//for(int i=0; i< IG.layer("curve2").curveNum(); i++){
+//  new ICurveTangentField(IG.curve(i)).intensity(10).gaussian(50);
+//}
+
+for(int i=0; i< IG.layer("normalCurve").curveNum(); i++){
+  new ICurveAttractorField(IG.curve(i)).intensity(15).gaussian(50);  //adds field normal to the curve
+}
+
+//for(int i=0; i< IG.layer("normalCurve2").curveNum(); i++){
+//  new ICurveAttractorField(IG.curve(i)).intensity(10).gaussian(50);  //adds field normal to the curve
+//}
 /* --- curve attractor ---*/
 
-//new IAttractor(0,45,0).intensity(-2);
-//new IAttractor(80,-50,0).intensity(-4);
-//new IAttractor(100,-10,0).intensity(-20).gaussianDecay(50.0);
-//a1.gaussianDecay(5);
 new IAttractor(150,0,0).intensity(8);
   
 /* --- END GEOMETRIES --- */
@@ -70,7 +77,7 @@ for(int i=0; i < geometries.length; i++){
 //      b.alignmentRatio(7.0);
 //      b.alignmentDist(30.0);
       b.cohesionDist(30);
-      b.cohesionRatio(1.7);
+      b.cohesionRatio(1.0);
       b.separationRatio(4.0);
       b.separationDist(30.0);
       b.alignmentRatio(7.0);
