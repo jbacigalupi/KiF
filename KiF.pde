@@ -28,39 +28,38 @@ void setup(){
     /*----------------first curve------------*/
 //ICompoundField field = new ICompoundField();
   for(int i=0; i< IG.layer("curve").curveNum(); i++){
-    new ICurveTangentField(IG.curve(i)).intensity(30).gaussian(50);
+    new ICurveTangentField(IG.curve(i)).intensity(40).gaussian(100);
   }
   for(int i=0; i< IG.layer("normalCurve").curveNum(); i++){
 //    new ICurveAttractorField(IG.curve(i)).intensity(13).gaussian(50);  //adds field normal to the curve
-    new ICurveAttractorField(IG.curve(i)).intensity(20).gaussian(50);  //adds field normal to the curve
+    new ICurveAttractorField(IG.curve(i)).intensity(40).gaussian(100);  //adds field normal to the curve
   }
     /*----------------END first curve------------*/
     /*----------------Repellers------------*/
-//  for(int i=0; i< IG.layer("repel").curveNum(); i++){
-//    field.add(new ICurveAttractorField(IG.curve(i)).intensity(-20).linear(50));
-//  }
+  for(int i=0; i< IG.layer("repel").curveNum(); i++){
+    new ICurveAttractorField(IG.curve(i)).intensity(-200).gaussian(40);
+  }
 
     /*----------------END repellers------------*/
   /* --- END curve attractor ---*/
-//  new IAttractor(50,15,10).intensity(-8);
-  new IAttractor(150,0,10).intensity(18);
+  new IAttractor(300,0,10).intensity(18);
     
   /* --- END GEOMETRIES --- */
   
   /* --- BEGIN VISUALIZATION OF FIELD --- */
   
-//  IFieldVisualizer visualizer = new IFieldVisualizer(-150,-100,-100, 150,100,100,20,10,10);
-//  //new IFieldVisualizer(-100,-100,1, 100,100,1, 40,40,1);
-//  visualizer.fixLength(false);  //changed magnitude of field vectors to be proportional to the slope of the surface
+  IFieldVisualizer visualizer = new IFieldVisualizer(-150,-100,-100, 150,100,100,20,10,10);
+  //new IFieldVisualizer(-100,-100,1, 100,100,1, 40,40,1);
+  visualizer.fixLength(false);  //changed magnitude of field vectors to be proportional to the slope of the surface
   
   /* --- END VISUALIZATION OF FIELD --- */
   
   IGeometry[] geometries = IG.layer("particle").geometries();
   for(int i=0; i < geometries.length; i++){
     println(i);
-    IBoid b = new IBoid(geometries[i]).fric(0.05); // reduced .fric(0.2) to .1, which seems to have reduced the birds inertia
-        b.cohesionDist(15);
-        b.cohesionRatio(2);
+    IBoid b = new IBoid(geometries[i]).fric(0.03); // reduced .fric(0.2) to .1, which seems to have reduced the birds inertia
+        b.cohesionDist(20);
+        b.cohesionRatio(1.2);
         b.separationRatio(4.0);
         b.separationDist(30.0);
         b.alignmentRatio(3.0);
